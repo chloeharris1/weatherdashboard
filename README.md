@@ -29,3 +29,4 @@ The following image shows the web application's appearance and functionality:
 ![WeatherDashboard](https://user-images.githubusercontent.com/89039793/135965971-091d6adb-c0af-4dec-b6b2-77f85b5cb533.JPG)
 
 ## Deployed Link
+https://chloeharris1.github.io/weatherdashboard/
