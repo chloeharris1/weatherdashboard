@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid text-center text-white header p-1">
+        <h1>Weather Dashboard</h1>
+    </div>
+
+    <main>
+        <!-- Search Bar -->
+        <div class="container"></div>
+            <div class="row">
+                <div class="col-sm-4 bg-white">
+                    <h3 class="pt-1">Search for a City:</h3>
+                        <!-- Input box for users searched city -->
+                        <div class="input-group mb-3">
+                            <input type="text" id="search-city" class="form-control" placeholder="San Diego" required />
+                            <div class="input-group-append">
+                                <button id="search-button" class="btn btn-block btn-info">Search</button>
+                            </div>
+                        </div>
+                        <!-- Section for user search history -->
+                        <button type="button" id="clear-history" class="btn btn-info">Clear History</button>
+                        <ul class="list-group">
+
+                        </ul>
+                    </div>
+                    <!-- Current day weather info-->
+                    <div class="col-sm-8 mt-2">
+                        <div class="row ml-2 border border-dark-rounded">
+                            <div id="day-weather" class="col-sm-12">
+                                <div id="current-weather">
+                                    <h1 class="d-inline" id="current-city"></h1>
+                                    <!-- <img class="d-inline" id="city-name-icon" src="http://openweathermap.org/img/wn/10d@2x.png"
+                            alt="weather icon"> -->
+                                    <p>Temperature:<span class="current" id="temperature"></span></p>
+                                    <p>Humidity:<span class="current" id="humidity"></span></p>
+                                    <p>Wind Speed:<span class="current" id="wind speed"></span></p>
+                                    <p>UV Index:<span class="current bg-danger rounded py-2 px-2 text-white"
+                                            id="uv-index"></span></p>
+                                </div>
+                            </div>
+                            <!-- 5-day weather forecast -->
+                            <div class="col-sm-12" id="future-weather">
+                                <h3>5-Day Forecast:</h3>
+                                <div class="row text-light" id="forecast">
+                                    <!-- day 1 -->
+                                    <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title-date" id="day1-date">3/31/2021</h5>
+                                                <p class="emoji" id="day-1-weather-emoji">&#127782</p>
+                                                <p class="card-text temp" id="day-1-temp">Temp: 73.72 F</p>
+                                                <p class="card-text wind" id="day-1-wind">Wind: 9.53 MPH</p>
+                                                <p class="card-text humidity" id="day-1-humidity">Humidity: 66%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- day 2 -->
+                                    <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title-date" id="day2-date">3/31/2021</h5>
+                                                <p class="emoji" id="day-2-weather-emoji">&#127782</p>
+                                                <p class="card-text temp" id="day-2-temp">Temp: 73.72 F</p>
+                                                <p class="card-text wind" id="day-2-wind">Wind: 9.53 MPH</p>
+                                                <p class="card-text humidity" id="day-2-humidity">Humidity: 66%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- day 3 -->
+                                    <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title-date" id="day3-date">3/31/2021</h5>
+                                                <p class="emoji" id="day-3-weather-emoji">&#127782</p>
+                                                <p class="card-text temp" id="day-3-temp">Temp: 73.72 F</p>
+                                                <p class="card-text wind" id="day-3-wind">Wind: 9.53 MPH</p>
+                                                <p class="card-text humidity" id="day-3-humidity">Humidity: 66%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- day 4 -->
+                                    <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title-date" id="day4-date">3/31/2021</h5>
+                                                <p class="emoji" id="day-4-weather-emoji">&#127782</p>
+                                                <p class="card-text temp" id="day-4-temp">Temp: 73.72 F</p>
+                                                <p class="card-text wind" id="day-4-wind">Wind: 9.53 MPH</p>
+                                                <p class="card-text humidity" id="day-4-humidity">Humidity: 66%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- day 5 -->
+                                    <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title-date" id="day5-date">3/31/2021</h5>
+                                                <p class="emoji" id="day-5-weather-emoji">&#127782</p>
+                                                <p class="card-text temp" id="day-5-temp">Temp: 73.72 F</p>
+                                                <p class="card-text wind" id="day-5-wind">Wind: 9.53 MPH</p>
+                                                <p class="card-text humidity" id="day-5-humidity">Humidity: 66%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
