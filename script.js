@@ -1,48 +1,6 @@
 
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
-// WHEN I view current weather conditions for that city
-// WHEN I view the UV index
-// THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// X Current forcast will be its own container row 
-// Request data from API, convert to JSON response, console log, save to local storage
-// Grab saved search from local storage and print text on HMTL button element
-// Create condition to color UV index status based on data
-
-// WHEN I view future weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// X Create div for each day in 5-day forecast 
-// Display date on top
-// Add Emoji for weather icon. Add icons to array, use conditional formula to determine which emoji is put on the page based on the weather data?
-// X Use paragraph for temp, wind, humidity text
-
-// WHEN I view future weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// X Create div for each day in 5-day forecast 
-// X Use paragraph for temp, wind, humidity text
-// Display date on top
-// Add Emoji for weather icon. Add icons to array, use conditional formula to determine which emoji is put on the page based on the weather data?
-
-
-// Possibly use?
-// var searchBtn = document.getElementById('search-button');
-// var searchHistory = document.getElementById('search-history-button');
-
 // Variable to store the searched city
 var city = "";
-
-// Global variables
-// var searchCity = $('#search-city');
-// var searchButton = $('#search-button');
-// var clearButton = $('#clear-history');  
-// var currentCity = $('#current-city');
-// var currentTemp = $('#temperature');
-// var currentHumidity = $('#humidity');
-// var currentWind = $('#wind speed');
-// var currentUvIndex = $('#uv-index');
-// var cityArr = [];
-
 
 // Variable for API Key
 var APIKey = "82ec049d39033e14bb1857a732520ca9";
@@ -56,26 +14,20 @@ searchButton.addEventListener('click', getCity, false);
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 // Event listener click, pull saved search data from local storage
-
-// Forloop for putting persisting data onto HTML page
-for (var i = 0; i < localStorage.length; i++) {
-    var city = localStorage.getitem(i);
-    // console.log(localStorage.getItem("city"));
-    var cityName = $(".list-group").addClass("list-group-item");
-    // Put user search history in list below search field 
-    cityName.append("<li>" + city + "<li>");
-}
-
-
-
 function getCity() {
     // Variable for user input for the city 
     var searchCity = document.getElementById('search-city').value;
-    city = searchCity
+    city = searchCity;
+    // Forloop for putting persisting data onto page
+    for (var i = 0; i < localStorage.length; i++) {
+        var city = localStorage.getItem(i);
+        console.log(localStorage.getItem("city"));
+        var cityName = $(".list-group").addClass("list-group-item");
+        // Put user search history in list below search field 
+        cityName.append("<li>" + city + "<li>");
+    }
 
 }
-
-
 
 
 function getWeather(cityName) {
