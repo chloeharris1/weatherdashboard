@@ -5,21 +5,20 @@ var city = "";
 // Variable for API Key
 var APIKey = "82ec049d39033e14bb1857a732520ca9";
 
-
-// WHEN I search for a city
-// Create event listener on click, store searched city in local storage. 
+// Create event listener for click, store searched city in local storage. 
 var searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', getCity, false);
 
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
-// Event listener click, pull saved search data from local storage
+// Retrieve user city search from local storage
 function getCity() {
-    // Variable for user input for the city 
+    // Variable for user city input  
     var searchCity = document.getElementById('search-city').value;
+    // City variable is equal to the value of searchCity 
     city = searchCity;
-    // Forloop for putting persisting data onto page
+    // console.log(city);
+    // Loop through local storage to get city, add to page as search history list item
     for (var i = 0; i < localStorage.length; i++) {
+        // Query a stored value
         var city = localStorage.getItem(i);
         console.log(localStorage.getItem("city"));
         var cityName = $(".list-group").addClass("list-group-item");
@@ -29,10 +28,11 @@ function getCity() {
 
 }
 
-
+// Retrieve current weather data from API
 function getWeather(cityName) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKey;
-    console.log(queryURL);
+    // console.log(queryURL);
+
     fetch(queryURL)
         .then(function (response) {
             console.log(response);
@@ -41,6 +41,7 @@ function getWeather(cityName) {
         .then(function(data) {
             console.log("data",data);
 
+            // HTML template for dynamically generated weather data 
             var template = `
                 <h1 class="d-inline" id="current-city">${data.name}</h1>
                 <img class="d-inline" id="city-name-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png"
@@ -57,6 +58,7 @@ function getWeather(cityName) {
         });
 }
 
+// Retrieve 5-day forecast data from API
 function forecast(cityName) {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + APIKey;
     console.log(queryURL);
@@ -75,9 +77,10 @@ function forecast(cityName) {
                     return false;
                 }
             });
-
+            // Variable to store HTML template with forecast data  
             var template = "";
             list.forEach(function(item) {
+                // HTML template for dynamically generated forecast data 
                 template += `
                     <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
                         <div class="card bg-dark text-light">
@@ -94,20 +97,20 @@ function forecast(cityName) {
                 `;
             })
             
-
+            // Append forecast data to page
             document.querySelector("#forecast").innerHTML = template;
 
         });
 }
 
 
-
+// Execute weather functions when user clicks search
 searchButton.addEventListener('click', function () {
-    // get the user input
+    // Get the user input
     var cityName = document.querySelector("#search-city").value;
-    // get the current weather
+    // Execute get weather function
     getWeather(cityName);
-    // forecast
+    // Execute forecast function
     forecast(cityName);
 });
 
