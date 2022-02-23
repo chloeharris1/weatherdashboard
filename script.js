@@ -16,14 +16,15 @@ function getCity() {
     // City variable is equal to the value of searchCity 
     city = searchCity;
     // console.log(city);
+    localStorage.setItem('city', JSON.stringify(city));
     // Loop through local storage to get city, add to page as search history list item
     for (var i = 0; i < localStorage.length; i++) {
         // Query a stored value
-        var city = localStorage.getItem(i);
-        console.log(localStorage.getItem("city"));
+        var historyCity = localStorage.getItem(i);
+        // console.log(city);
         var cityName = $(".list-group").addClass("list-group-item");
-        // Put user search history in list below search field 
-        cityName.append("<li>" + city + "<li>");
+        // Add user search history in list below search field 
+        cityName.append("<li>" + city + "</li>");
     }
 
 }
@@ -41,7 +42,7 @@ function getWeather(cityName) {
         .then(function(data) {
             console.log("data",data);
 
-            // HTML template for dynamically generated weather data 
+            // HTML template for adding dynamically generated weather data to page
             var template = `
                 <h1 class="d-inline" id="current-city">${data.name}</h1>
                 <img class="d-inline" id="city-name-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png"
@@ -68,7 +69,7 @@ function forecast(cityName) {
             return response.json();
         })
         .then(function(data) {
-            console.log("forecast",data);
+            console.log("forecast", data);
 
             var list = data.list.filter(function(datum) {
                 if (datum.dt_txt.includes("12:00:00")) {
@@ -80,7 +81,7 @@ function forecast(cityName) {
             // Variable to store HTML template with forecast data  
             var template = "";
             list.forEach(function(item) {
-                // HTML template for dynamically generated forecast data 
+                // HTML template for adding dynamically generated forecast data to page
                 template += `
                     <div class="col-sm2 forecast text-white ml-2 mb-3 p-2 mt-2">
                         <div class="card bg-dark text-light">
