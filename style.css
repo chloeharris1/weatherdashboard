@@ -2,7 +2,11 @@
     background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 
-
-/* #forecast {
+#weatherData {
     display: none;
-} */
+}
+
+.list-group {
+    list-style: none;
+    cursor: pointer;
+}
