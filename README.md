@@ -1,4 +1,4 @@
-# Weather Dashboard ![favicon](./cloudy.png)
+# Weather Dashboard ![favicon](./assets/cloudy.png)
 
 ![license badge](https://img.shields.io/badge/license-MIT-blue)
 
