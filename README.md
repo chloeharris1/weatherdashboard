@@ -18,7 +18,7 @@ This application uses the OpenWeather One Call API to retreive weather data and 
 ## Screenshot
 
 The following image shows the web application's appearance and functionality:
-![WeatherDashboard](./Dashboard_Screenshot.png)
+![WeatherDashboard](./assets/Dashboard_Screenshot.png)
 
 ## Site Link
 
