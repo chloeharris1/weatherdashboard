@@ -1,72 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Favicon -->
-    <link type="img/png" sizes="16x16" rel="icon" href="./cloudy.png">
+    <link type="img/png" sizes="16x16" rel="icon" href="./cloudy.png" />
     <title>Weather Dashboard</title>
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
+    <!-- Bootstrap Font Icon CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
     <!-- Moment -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
 
-<body>
-    <div class="container-fluid text-center text-white header p-1">
-        <h1>Weather Dashboard</h1>
+  <body>
+    <div class="container-fluid text-center text-dark header p-1">
+      <h1>Weather Dashboard</h1>
     </div>
-    <main>
-        <!-- Search Bar -->
-        <div class="container col-12">
-            <div class="row">
-                <div class="col-sm-3 bg-white mt-4 ml-4">
-                    <h3 class="pt-1">Search for a City:</h3>
-                    <!-- Input box for users searched city -->
-                    <div class="input-group mb-3">
-                        <input type="text" id="search-city" class="form-control" placeholder="San Diego" required />
-                        <div class="input-group-append">
-                            <button id="search-button" class="btn btn-block btn-info">Search</button>
-                        </div>
-                    </div>
-                    <button type="button" id="clear-history" class="btn btn-info mb-3">Clear History</button>
-                    <!-- Section for user search history -->
-                    <ul class="list-group">
-
-                    </ul>
-                </div>
-                <!-- Current day weather info-->
-                <div id="weatherData" class="col-sm-8 mt-4">
-                    <div class="row ml-2 border border-dark-rounded">
-                        <div id="day-weather" class="col-sm-12">
-                            <div id="current-weather">
-                                <h1 class="d-inline mt-4" id="current-city"></h1>
-
-                            </div>
-                        </div>
-                        <!-- 5-day weather forecast -->
-                        <div class="col-sm-12" id="future-weather">
-                            <h3>5-Day Forecast:</h3>
-                            <div class="row text-light" id="forecast">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <main class="container-fluid">
+      <!-- Search Bar -->
+      <div class="container-fluid">
+        <div class="row ms-2 me-2">
+          <div class="col-sm-3 bg-white mt-4">
+            <!-- ml-4 ^ -->
+            <h3 class="pt-1">Search for a City:</h3>
+            <!-- Input box for users searched city -->
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                id="search-city"
+                class="form-control"
+                placeholder="City Name"
+                required
+              />
+              <div class="input-group-append">
+                <button type="button" id="search-button" class="btn btn-block">
+                  <span class="bi bi-search pe-1"></span>Search
+                </button>
+              </div>
             </div>
+            <button type="button" id="clear-history" class="btn btn-info mb-3">
+              Clear History
+            </button>
+            <!-- Section for user search history -->
+            <ul class="list-group" id="list"></ul>
+          </div>
+          <!-- Current day weather info-->
+          <div id="weatherData" class="col-sm-9 mt-4">
+            <div class="row border rounded">
+              <div id="day-weather" class="col-sm-12 mt-2">
+                <h4 class="text-secondary">TODAY'S FORECAST:</h4>
+                <div id="current-weather">
+                  <h1 class="d-inline mt-4" id="current-city"></h1>
+                </div>
+              </div>
+              <!-- 5-day weather forecast -->
+              <div class="col-sm-12" id="future-weather">
+                <h4>5-DAY FORECAST:</h4>
+                <div class="row text-light" id="forecast"></div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

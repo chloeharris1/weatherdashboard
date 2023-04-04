@@ -1,12 +1,25 @@
 .header {
-    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 
 #weatherData {
-    display: none;
+  display: none;
+}
+
+#search-button {
+  background: #20bf55;
+}
+
+#search-button:hover {
+  background: #22ca5a;
 }
 
 .list-group {
-    list-style: none;
-    cursor: pointer;
+  list-style: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+i {
+  font-size: 1em;
 }
