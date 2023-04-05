@@ -99,7 +99,7 @@ function forecast(cityName) {
       list.forEach(function (item) {
         // HTML template for adding dynamically generated forecast data to page
         template += `
-                    <div class="col-sm-2 forecast text-white me-2 mb-2 p-2 mt-2">
+                    <div class="col-sm forecast text-white me-2 mb-2 p-2 mt-2">
                         <div class="card bg-dark text-light">
                             <div class="card-body">
                                 <h5 class="card-title-date" id="day1-date">${new Date(
