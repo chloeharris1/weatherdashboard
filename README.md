@@ -12,7 +12,7 @@ This application uses the OpenWeather One Call API to retreive weather data and 
 
 - jQuery
 - Moment.js
-- Bootstrap
+- Bootstrap 5
 - Server-Side API [OpenWeather](https://openweathermap.org/)
 
 ## Screenshot
@@ -26,7 +26,7 @@ The following image shows the web application's appearance and functionality:
 
 ## License
 
-Licensed under the MIT license.
+Licensed under the MIT license.s
 
 ## Credits
 
